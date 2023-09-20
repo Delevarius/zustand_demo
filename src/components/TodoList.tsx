@@ -35,7 +35,7 @@ function TodoListItems() {
 function TodoList() {
   return (
     <>
-      <h4>Todo items:</h4>
+      <h2 className="text-2xl font-extrabold leading-none tracking-tight text-gray-900">Todo items:</h2>
       <TodoListItems />
     </>
   );
