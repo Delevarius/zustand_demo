@@ -10,8 +10,10 @@ function Header() {
   } = useStore((state) => state);
 
   return (
-    <div className="flex flex-col w-full">
-      <h2>Super Amazing Todo App</h2>
+    <div className="flex flex-col w-full items-center space-y-10">
+      <h2 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        Super Amazing Todo App
+      </h2>
       <div className="flex w-full space-x-10">
         <input
           value={newTodo}
