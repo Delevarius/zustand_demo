@@ -1,16 +1,9 @@
 import "react";
 
-import useStore from "../store";
 import { StyledButton, StyledCheckbox, StyledInput } from "../styles";
 
 function TodoListItems() {
-  const {
-    todos,
-    toggleTodo,
-    updateTodo,
-    removeTodo
-  } = useStore((state) => state);
-
+  const todos = [];
   return (
     <>
       {todos.map((todo) => (
