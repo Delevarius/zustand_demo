@@ -1,5 +1,4 @@
 import "react";
-import useStore from "../store";
 import { StyledButton, StyledInput } from "../styles";
 
 function Header() {

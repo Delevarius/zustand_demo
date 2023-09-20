@@ -14,17 +14,14 @@ function TodoListItems() {
           <input
             type="checkbox"
             className={StyledCheckbox}
-            onClick={() => toggleTodo(todo.id)}
             checked={todo.done}
           />
           <input
             className={StyledInput}
             value={todo.text}
-            onChange={(e) => updateTodo(todo.id, e.target.value)}
           />
           <button
             className={StyledButton}
-            onClick={() => removeTodo(todo.id)}
           >Delete</button>
         </div>
       ))}
