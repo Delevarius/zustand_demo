@@ -1,3 +1,4 @@
+import { create } from "zustand";
 
 export interface Todo {
   id: number;
@@ -40,3 +41,42 @@ type Store = {
   setNewTodo: (newTodo: string) => void;
 };
 
+const useStore = create<Store>(
+  (set): Store => ({
+    todos: [],
+    newTodo: "",
+    setTodos: (todos: Todo[]) =>
+      set((state) => ({
+        ...state,
+        todos,
+      })),
+    removeTodo: (id: number) =>
+      set((state) => ({
+        ...state,
+        todos: removeTodo(state.todos, id),
+      })),
+    updateTodo: (id: number, text: string) =>
+      set((state) => ({
+        ...state,
+        todos: updateTodo(state.todos, id, text),
+      })),
+    toggleTodo: (id: number) =>
+      set((state) => ({
+        ...state,
+        todos: toggleTodo(state.todos, id),
+      })),
+    setNewTodo: (newTodo: string) =>
+      set((state) => ({
+        ...state,
+        newTodo,
+      })),
+    addTodo: () =>
+      set((state) => ({
+        ...state,
+        todos: addTodo(state.todos, state.newTodo),
+        newTodo: "",
+      })),
+  })
+);
+
+export default useStore;
