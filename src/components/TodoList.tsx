@@ -1,30 +1,38 @@
 import "react";
 
 import useStore from "../store";
-import { StyledCheckbox, StyledInput } from "../styles";
+import { StyledButton, StyledCheckbox, StyledInput } from "../styles";
 
 function TodoListItems() {
-  const store = useStore((state) => state);
+  const {
+    todos,
+    toggleTodo,
+    updateTodo,
+    removeTodo
+  } = useStore((state) => state);
 
   return (
     <>
-      {store.todos.map((todo) => (
+      {todos.map((todo) => (
         <div
-          className="flex space-between w-full"
+          className="flex space-between space-x-4 w-full"
           key={todo.id}
         >
           <input
             type="checkbox"
             className={StyledCheckbox}
-            onClick={() => store.toggleTodo(todo.id)}
+            onClick={() => toggleTodo(todo.id)}
             checked={todo.done}
           />
           <input
             className={StyledInput}
             value={todo.text}
-            onChange={(e) => store.updateTodo(todo.id, e.target.value)}
+            onChange={(e) => updateTodo(todo.id, e.target.value)}
           />
-          <button onClick={() => store.removeTodo(todo.id)}>Delete</button>
+          <button
+            className={StyledButton}
+            onClick={() => removeTodo(todo.id)}
+          >Delete</button>
         </div>
       ))}
     </>
@@ -34,7 +42,7 @@ function TodoListItems() {
 function TodoList() {
   return (
     <>
-      <h4>Todo items</h4>
+      <h4>Todo items:</h4>
       <TodoListItems />
     </>
   );
